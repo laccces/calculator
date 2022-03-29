@@ -22,3 +22,6 @@ const divide = function(num1, num2) {
   return result;
 };
 
+const operate = function() {
+    
+}
