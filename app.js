@@ -1,27 +1,43 @@
-// Add
-const add = function(num1, num2) {
-	let result = num1 + num2
-  return result;
-};
+let currentNum = "";
+let previousNum = "";
+let operator = "";
 
-// Subtract
-const subtract = function(num1, num2) {
-	let result = num1 - num2
-  return result;
-};
+const currentDisplayNumber = document.querySelector(".currentNumber");
+const previousDisplayNumber = document.querySelector(".previousNumber");
 
-// Multiply
-const multiply = function(num1, num2) {
-	let result = num1 * num2
-  return result;
-};
+const equal = document.querySelector(".equal");
 
-// Divide
-const divide = function(num1, num2) {
-	let result = num1 / num2
-  return result;
-};
+const decimal = document.querySelector(".decimal");
 
-const operate = function() {
-    
+const clear = document.querySelector(".clear");
+
+const numberButtons = document.querySelectorAll(".number");
+
+const operators = document.querySelectorAll(".operator");
+
+numberButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        handleNumber(e.target.textContent);
+    })
+})
+
+function handleNumber(number) {
+ if(currentNum.length <= 10) {
+    currentNum += number;
+ currentDisplayNumber.textContent = currentNum;
+ }
+}
+
+operators.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        handleOperator(e.target.textContent)
+    })
+})
+
+function handleOperator(op) {
+    operator = op;
+    previousNum = currentNum
+    previousDisplayNumber.textContent = previousNum + ' ' + operator;
+    currentNum = ""
+    currentDisplayNumber.textContent = "";
 }
